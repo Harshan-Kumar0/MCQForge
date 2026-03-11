@@ -233,9 +233,9 @@
         data.forEach((q, i) => {
             if (!q.question) errors.push(`Q${i + 1}: missing "question" field`);
             if (!Array.isArray(q.options) || q.options.length < 2)
-                errors.push(`Q${i + 1}: "options" must be an array of at least 2 items`);
+                errors.push(`Q${}: "options" must be an array of at least 2 items`);
             if (typeof q.answer !== "number" || q.answer < 0 || q.answer >= (q.options?.length ?? 0))
-                errors.push(`Q${i + 1}: "answer" must be a valid index (0-based)`);
+                errors.push(`Q${i}: "answer" must be a valid index (0-based)`);
         });
         if (errors.length > 0) {
             return showFeedback("Validation errors:\n• " + errors.slice(0, 5).join("\n• ") + (errors.length > 5 ? `\n…and ${errors.length - 5} more` : ""), "error");
@@ -544,3 +544,4 @@
     // ───── Init ─────
     renderHome();
 })();
+
